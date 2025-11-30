@@ -1,69 +1,40 @@
 
+## 🚀 Documentación del Proyecto Frontend
 
-| Nombre |
-|---------|
-| juan perdomo |
-| hendelbert Espinoza|
-| yonathan nieles |
-| susej viscaya |
+Este documento describe la configuración, ejecución y funcionalidad del cliente frontend.
 
----
+## 👥 Equipo de Desarrollo
 
-## 📋 **Requisitos del Sistema**
-
-- **Node.js** (versión 16 o superior)
-- **NPM** (viene incluido con Node.js)
-- **Conexión a internet** (para instalar dependencias)
-
-## 🔗 **Backend Requerido**
-Necesitas tener ejecutándose localmente el:
-[**Backend de la API**](https://github.com/thewolf160/Tarea-Foc-2025-2.git)
+| Nombre | Rol |
+| :--- | :--- |
+| Juan Perdomo | Desarrollador |
+| Hendelbert Espinoza | Desarrollador |
+| Yonathan Nieles | Desarrollador |
+| Susej Viscaya | Desarrollador |
 
 ---
 
+## 💻 Requisitos del Entorno
 
+Para ejecutar este proyecto localmente, necesitas tener instalado lo siguiente:
 
-###  **Configurar Variables de Entorno**
+* **Node.js**: Versión **16** o superior.
+* **NPM**: Incluido por defecto con la instalación de Node.js.
+* **Conexión a Internet**: Requerida para instalar las dependencias iniciales.
 
-Cambia el archivo `.env.example` en la raíz del proyecto a `.env` y modifica los valores de la siguiente manera:
+---
 
-```env
-VITE_API_URL=http://localhost:3000/api/v1
-```
+## 🔗 Dependencias del Sistema
 
-#### 📍 **Notas Clave:**
-- **`PORT_API`**: Puerto del backend de la API, es decir el puerto en el que se ejecuta el servidor de la API
-- Verifica que el backend esté activo antes de ejecutar el frontend
-- La URL debe coincidir exactamente con la de tu servidor backend
+### 1. Backend Requerido
 
-#### 🚨 **Si hay error de conexión:**
-1. Revisa que el backend esté ejecutándose
-2. Confirma que el puerto coincida en ambos proyectos
-3. Verifica que no haya conflictos de puertos
+Este frontend actúa como un cliente de la API. Por lo tanto, el **Backend de la API** debe estar **ejecutándose** antes de iniciar el frontend.
 
-###  **Ejecutar la Aplicación**
+* **Repositorio del Backend:** [https://github.com/thewolf160/Tarea-Foc-2025-2.git](https://github.com/thewolf160/Tarea-Foc-2025-2.git)
+
+### 2. Instalación de Dependencias
+
+Ejecuta el siguiente comando en la raíz del proyecto para descargar todas las dependencias:
+
 ```bash
-npm run dev
-```
-
-## 🚀 **Funcionamiento del Sistema**
-
-### 🎯 **Propósito Principal**
-Este proyecto funciona como un cliente frontend especializado que consume una API REST para visualizar y consultar información almacenada en una base de datos. Su enfoque está exclusivamente en la presentación de datos mediante operaciones de lectura.
-
-### 📊 **Características de Operación**
-
-#### 🔍 **Solo Consultas (Operaciones GET)**
-- Visualización de datos en tiempo real desde la base de datos
-- Múltiples módulos disponibles para consulta
-- Interfaz de solo lectura - diseñada específicamente para mostrar información
-
-#### 🧭 **Sistema de Navegación**
-- Barra de navegación intuitiva que organiza los diferentes módulos
-- Acceso rápido entre secciones sin recargar la página
-- Experiencia de usuario fluida con transiciones entre vistas
-
-#### 📋 **Presentación de Datos**
-- Tablas dinámicas que muestran la información de forma estructurada
-- Formato consistente en todos los módulos
-- Datos organizados con columnas claras y legibles
+npm install
