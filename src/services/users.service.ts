@@ -4,7 +4,7 @@ type ApiUser = {
   id: number
   name: string | null
   email: string
-  role_id?: number | null
+  role_id: number 
   status?: boolean | null
 }
 
@@ -20,17 +20,14 @@ type UsersResponse = ApiListResponse<{
   users?: ApiUser[]
 }>
 
-const FALLBACK_USERS: UserRow[] = [
-  { id: 1, name: 'Usuario 1', email: 'usuario1@example.com', role: 'Rol #1', status: 'Activo' },
-  { id: 2, name: 'Usuario 2', email: 'usuario2@example.com', role: 'Rol #2', status: 'Activo' },
-]
+const FALLBACK_USERS: UserRow[] = []
 
 const normalizeUsers = (users: ApiUser[] = []): UserRow[] =>
   users.map((user) => ({
     id: user.id,
     name: user.name ?? 'Sin nombre',
     email: user.email,
-    role: user.role_id ? `Rol #${user.role_id}` : 'Sin rol',
+    role: `Rol #${user.role_id}`,
     status: user.status === false ? 'Inactivo' : 'Activo',
   }))
 
@@ -38,12 +35,13 @@ export const listUsers = async (): Promise<UserRow[]> => {
   try {
     const response = await httpGet<UsersResponse>('/users')
     const users = response.data?.users
+
     if (!users || users.length === 0) {
       return FALLBACK_USERS
     }
     return normalizeUsers(users)
   } catch (error) {
-    console.warn('listUsers fallback:', error)
+    console.warn('Error Users:', error)
     return FALLBACK_USERS
   }
 }

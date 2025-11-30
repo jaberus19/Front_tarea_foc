@@ -16,10 +16,7 @@ type WarehousesResponse = ApiListResponse<{
   warehouses?: ApiWarehouse[]
 }>
 
-const FALLBACK_WAREHOUSES: WarehouseRow[] = [
-  { id: 1, name: 'Almacén 1', status: 'Activo' },
-  { id: 2, name: 'Almacén 2', status: 'Activo' },
-]
+const FALLBACK_WAREHOUSES: WarehouseRow[] = []
 
 const normalizeWarehouses = (warehouses: ApiWarehouse[] = []): WarehouseRow[] =>
   warehouses.map((warehouse) => ({
@@ -32,12 +29,10 @@ export const listWarehouses = async (): Promise<WarehouseRow[]> => {
   try {
     const response = await httpGet<WarehousesResponse>('/warehouses')
     const warehouses = response.data?.warehouses
-    if (!warehouses || warehouses.length === 0) {
-      return FALLBACK_WAREHOUSES
-    }
+    if (!warehouses || warehouses.length === 0) return FALLBACK_WAREHOUSES
     return normalizeWarehouses(warehouses)
   } catch (error) {
-    console.warn('listWarehouses fallback:', error)
+    console.warn('Error Warehouses:', error)
     return FALLBACK_WAREHOUSES
   }
 }

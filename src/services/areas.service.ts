@@ -3,7 +3,7 @@ import { httpGet, type ApiListResponse } from './http.service'
 type ApiArea = {
   id: number
   name: string
-  warehouse_id?: number | null
+  warehouse_id: number 
   status?: boolean | null
 }
 
@@ -15,32 +15,27 @@ export type AreaRow = {
 }
 
 type AreasResponse = ApiListResponse<{
-  areas?: ApiArea[]
+  areas?: ApiArea[] 
 }>
 
-const FALLBACK_AREAS: AreaRow[] = [
-  { id: 1, name: 'Área 1', warehouse: 'Almacén #1', status: 'Activo' },
-  { id: 2, name: 'Área 2', warehouse: 'Almacén #2', status: 'Activo' },
-]
+const FALLBACK_AREAS: AreaRow[] = []
 
 const normalizeAreas = (areas: ApiArea[] = []): AreaRow[] =>
   areas.map((area) => ({
     id: area.id,
     name: area.name,
-    warehouse: area.warehouse_id ? `Almacén #${area.warehouse_id}` : 'Sin almacén',
+    warehouse: `Almacén #${area.warehouse_id}`,
     status: area.status === false ? 'Inactivo' : 'Activo',
   }))
 
 export const listAreas = async (): Promise<AreaRow[]> => {
   try {
     const response = await httpGet<AreasResponse>('/areas')
-    const areas = response.data?.areas
-    if (!areas || areas.length === 0) {
-      return FALLBACK_AREAS
-    }
+    const areas = response.data?.areas 
+    if (!areas || areas.length === 0) return FALLBACK_AREAS
     return normalizeAreas(areas)
   } catch (error) {
-    console.warn('listAreas fallback:', error)
+    console.warn('Error Areas:', error)
     return FALLBACK_AREAS
   }
 }

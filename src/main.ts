@@ -1,4 +1,5 @@
 import './style.css'
+import { renderTestModule, mountTestModule } from './modules/test.module'
 import { renderCategoriesModule, mountCategoriesModule } from './modules/categories.module'
 import { renderUsersModule, mountUsersModule } from './modules/users.module'
 import { renderRolesModule, mountRolesModule } from './modules/roles.module'
@@ -6,10 +7,11 @@ import { renderWarehousesModule, mountWarehousesModule } from './modules/warehou
 import { renderAreasModule, mountAreasModule } from './modules/areas.module'
 import { renderProductsModule, mountProductsModule } from './modules/products.module'
 
-type Route = 'home' | 'categories' | 'users' | 'roles' | 'warehouses' | 'areas' | 'products'
+type Route = 'home' | 'test' | 'categories' | 'users' | 'roles' | 'warehouses' | 'areas' | 'products'
 
 const NAV_ITEMS: { label: string; route: Route }[] = [
   { label: 'Inicio', route: 'home' },
+  { label: 'Test', route: 'test' },
   { label: 'Roles', route: 'roles' },
   { label: 'Categorías', route: 'categories' },
   { label: 'Almacenes', route: 'warehouses' },
@@ -48,6 +50,9 @@ const render = () => {
 
 const mountModule = () => {
   switch (state.route) {
+    case 'test':
+      void mountTestModule()
+      break
     case 'categories':
       void mountCategoriesModule()
       break
@@ -88,6 +93,8 @@ const renderNav = () => `
 
 const renderRoute = () => {
   switch (state.route) {
+    case 'test':
+      return renderTestModule()
     case 'categories':
       return renderCategoriesModule()
     case 'users':
@@ -116,6 +123,7 @@ const renderHome = () => `
     <div style="margin-top: 2rem;">
       <h3>Módulos disponibles:</h3>
       <ul style="list-style: disc; margin-left: 2rem; margin-top: 1rem;">
+        <li><strong>Test</strong> - Registros de prueba</li>
         <li><strong>Roles</strong> - Gestión de roles del sistema</li>
         <li><strong>Categorías</strong> - Categorías de productos</li>
         <li><strong>Almacenes</strong> - Almacenes disponibles</li>

@@ -16,10 +16,7 @@ type CategoriesResponse = ApiListResponse<{
   categories?: ApiCategory[]
 }>
 
-const FALLBACK_CATEGORIES: CategoryRow[] = [
-  { id: 1, name: 'Categoría 1', status: 'Activo' },
-  { id: 2, name: 'Categoría 2', status: 'Activo' },
-]
+const FALLBACK_CATEGORIES: CategoryRow[] = []
 
 const normalizeCategories = (categories: ApiCategory[] = []): CategoryRow[] =>
   categories.map((category) => ({
@@ -32,12 +29,10 @@ export const listCategories = async (): Promise<CategoryRow[]> => {
   try {
     const response = await httpGet<CategoriesResponse>('/categories')
     const categories = response.data?.categories
-    if (!categories || categories.length === 0) {
-      return FALLBACK_CATEGORIES
-    }
+    if (!categories || categories.length === 0) return FALLBACK_CATEGORIES
     return normalizeCategories(categories)
   } catch (error) {
-    console.warn('listCategories fallback:', error)
+    console.warn('Error Categories:', error)
     return FALLBACK_CATEGORIES
   }
 }
