@@ -1,15 +1,11 @@
-# 🚀 Tarea FOC - Frontend 2025
 
-¡Bienvenido al proyecto frontend desarrollado para la asignatura de Fundamentos de Computación!
-
-## 👥 **Equipo de Desarrollo**
 
 | Nombre |
 |---------|
-| Jesús Cortez |
-| Jesús Camacho |
-| Santiago Rodriguez |
-| Erika |
+| juan perdomo |
+| hendelbert Espinoza|
+| yonathan nieles |
+| susej viscaya |
 
 ---
 
@@ -21,29 +17,18 @@
 
 ## 🔗 **Backend Requerido**
 Necesitas tener ejecutándose localmente el:
-[**Backend de la API**](https://github.com/RitoTorri/Tarea-Foc-Backend-2025)
+[**Backend de la API**](https://github.com/thewolf160/Tarea-Foc-2025-2.git)
 
 ---
 
-## ⚡ **Instalación Rápida**
 
-### 1. **Clonar el Repositorio**
-```bash
-git clone https://github.com/RitoTorri/Tarea-Foc-Frontend-2025
-cd Tarea-Foc-Frontend-2025
-```
 
-### 2. **Instalar Dependencias**
-```bash
-npm install
-```
-
-### 3. **Configurar Variables de Entorno**
+###  **Configurar Variables de Entorno**
 
 Cambia el archivo `.env.example` en la raíz del proyecto a `.env` y modifica los valores de la siguiente manera:
 
 ```env
-VITE_API_URL=http://localhost:PORT_API/api/v1
+VITE_API_URL=http://localhost:3000/api/v1
 ```
 
 #### 📍 **Notas Clave:**
@@ -56,19 +41,10 @@ VITE_API_URL=http://localhost:PORT_API/api/v1
 2. Confirma que el puerto coincida en ambos proyectos
 3. Verifica que no haya conflictos de puertos
 
-### 4. **Ejecutar la Aplicación**
+###  **Ejecutar la Aplicación**
 ```bash
 npm run dev
 ```
-
-### 5. **Acceder a la Aplicación**
-```
-🌐 Local:    http://localhost:5173/
-```
-
-Presiona `Ctrl + Click` en la URL o ábrela manualmente en tu navegador.
-
----
 
 ## 🚀 **Funcionamiento del Sistema**
 
